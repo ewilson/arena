@@ -1,8 +1,8 @@
 .idea
 *~
 
-data/arena.db
-arena-venv
+data/scoreboard.db
+scoreboard-venv
 
 # Created by .ignore support plugin (hsz.mobi)
 ### Python template

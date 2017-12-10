@@ -1,16 +1,13 @@
 -- Original schema, do not modify. Changes will be added in migrations
-CREATE TABLE user (
+CREATE TABLE app_user (
     id INTEGER PRIMARY KEY,
-    handle TEXT NOT NULL,
-    admin INT
+    email TEXT UNIQUE NOT NULL,
+    password TEXT NOT NULL
 );
 
-CREATE TABLE chirp (
+CREATE TABLE player (
     id INTEGER PRIMARY KEY,
-    body TEXT NOT NULL,
-    user_id INT,
-    datetime TEXT NOT NULL,
-    FOREIGN KEY(user_id) REFERENCES user(id)
+    name TEXT NOT NULL
 );
 
 CREATE TABLE migration (

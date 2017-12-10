@@ -6,7 +6,7 @@ import os
 import sqlite3
 
 filenames = [fn for fn in os.listdir('data/migrations') if fn.endswith('.sql')]
-conn = sqlite3.connect('data/arena.db')
+conn = sqlite3.connect('data/scoreboard.db')
 
 executed_scripts = conn.execute('SELECT script FROM migration').fetchall()
 ex_script_names = [r[0] for r in executed_scripts]

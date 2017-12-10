@@ -1,8 +1,8 @@
 import sqlite3
 
-from flask import app, g
+from flask import g
 
-from arena import app
+from scoreboard import app
 
 def get_all_chirps():
     conn = get_db()
