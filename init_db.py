@@ -2,7 +2,7 @@
 #
 # To reset from captured DB, run:
 #
-# ./init_db.py
+#   init_db.py
 #
 # To reset to empty DB, run:
 #
@@ -19,7 +19,7 @@ if os.path.isfile(DB_NAME):
     os.remove(DB_NAME)
 
 if len(argv) > 1 and argv[1] == 'new':
-    SCHEMA_FILE = 'data/scoreboard.sql'
+    SCHEMA_FILE = 'data/schema.sql'
 else:
     SCHEMA_FILE = 'data/test_scoreboard.sql'
 
