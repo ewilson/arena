@@ -1,35 +1,29 @@
-# Arena
+# Scoreboard
 
-This is the skeleton of a Twitter clone project.
+A (future) ELO rating system for unscheduled matches. The guiding principles of this application are
 
-## Install Python 3 and Sqlite3
+- Simple technology for easy participation of novices -- such as [my-son](https://github.com/timothy-wilson)
+- Unobtrusive functionality -- descriptive of what has happened, never prescriptive for future actions
 
-The project will require Python 3. Please install Python 3.5 and make sure the appropriate version of pip is available
-from the command line. 
+Following is out of date in many places.
 
-Alse Sqlite 3 will be needed.
+## Requirements
 
-Some of these instructions have not been tested on Windows. You may have a better experience if you use Git Bash
-instead of CMD.
-
-## Fork and clone repo
-
-1. Log into GitHub
-1. Click the fork button [here](https://github.com/ewilson/arena)
-1. Execute `git clone https://github.com/ewilson/arena.git` in the terminal, in the directory you want the project to be.
+- Python 3.6
+- Sqlite 3
 
 ## Install dependencies in virtualenvironment
 
 Execute the following commands in PowerShell or Bash
 
 1. `cd arena`
-1. `pyvenv venv`
-1. `source venv/bin/activate`
+1. `python3.6 -m venv scoreboard-venv`
+1. `source scoreboard-venv/bin/activate`
 1. `pip3 install -r requirements.txt`
 
 ## Running the application
 
-    $ python arena.py
+    $ python scoreboard.py
 
 Now navigate to [localhost:5000](http://localhost:5000/) to verify that it is running locally. 
 
@@ -57,29 +51,9 @@ the test database into the structure that your changes require.
 
 It will be common for changes to the application to require changes to the database structure.
 
-## Trello and Pull requests 
-
-Here is an outline of our workflow.
-
-1. We discuss the card in Trello that you will implement next. We will try at this point
-to resolve confusions about the requirements. This card will then be moved to the "Doing" column
-in Trello.
-
-2. You implement and test the feature. Asking questions during this step may be useful.
-
-3. When you think the feature is done, move the Trello card to the "Review" column, and open a
-Pull Request. A Pull Request is a GitHub feature that will allow for me to see and comment on your
-changes.
-
-4. I will give comments on the things that need to be improved, both in code style and in defects
-discovered. You will need to fix these issues and push them to your pull request branch.
-
-5. When I am satisfied that the feature is complete, I will merge your code, and the card is moved to done.
-We now return to step 1.
-
 ## Useful documentation
 
-- [Flask](http://flask.pocoo.org/docs/0.11/)
+- [Flask](http://flask.pocoo.org/docs/0.12/)
 - [Jinja2](http://jinja.pocoo.org/docs/dev/)
 - [Sqlite](https://sqlite.org/docs.html)
 - [Python DB-API interface for SQLite](https://docs.python.org/3/library/sqlite3.html)
