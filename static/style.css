@@ -13,3 +13,9 @@ table, th, td {
 table {
     border-collapse: collapse;
 }
+
+.footer-item {
+    float: left;
+    list-style: none;
+    padding: 5px;
+}

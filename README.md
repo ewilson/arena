@@ -16,7 +16,6 @@ Following is out of date in many places.
 
 Execute the following commands in PowerShell or Bash
 
-1. `cd arena`
 1. `python3.6 -m venv scoreboard-venv`
 1. `source scoreboard-venv/bin/activate`
 1. `pip3 install -r requirements.txt`

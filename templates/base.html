@@ -8,5 +8,13 @@
 <body>
   <h1>Scoreboard</h1>
     {% block body %}{% endblock %}
+  <ul>
+    <li class="footer-item">
+        <a href="{{ url_for('index') }}">Home</a>
+    </li>
+    <li class="footer-item">
+        <a href="{{ url_for('list_players') }}">Players</a>
+    </li>
+  </ul>
 </body>
 </html>

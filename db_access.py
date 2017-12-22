@@ -4,47 +4,33 @@ from flask import g
 
 from scoreboard import app
 
-def get_all_chirps():
+
+def get_players():
     conn = get_db()
-    return conn.execute('''
-        SELECT c.id, c.body, c.datetime, u.handle
-        FROM chirp c, user u
-        WHERE c.user_id = u.id
-    ''').fetchall()
+    return conn.execute('SELECT id, name FROM player').fetchall()
 
 
-def delete_chirp(chirp_id):
+def delete_player(player_id):
     conn = get_db()
-    conn.execute('DELETE FROM chirp WHERE id = :id', {'id': chirp_id})
+    conn.execute('DELETE FROM player WHERE id = :id', {'id': player_id})
     conn.commit()
 
 
-def get_all_users():
+def add_player(name):
     conn = get_db()
-    return conn.execute('SELECT id, handle, admin FROM user').fetchall()
-
-
-def delete_user(user_id):
-    conn = get_db()
-    conn.execute('DELETE FROM user WHERE id = :id', {'id': user_id})
-    conn.commit()
-
-
-def add_user(handle):
-    conn = get_db()
-    conn.execute('INSERT INTO user (handle, admin) values (:handle, :admin)',
-                 {'handle': handle, 'admin': 0})
+    conn.execute('INSERT INTO player (name) values (:name)',
+                 {'name': name})
     conn.commit()
 
 
 def get_db():
-    if not hasattr(g, 'arena.db'):
+    if not hasattr(g, 'scoreboard.db'):
         g.conn = connect_db()
     return g.conn
 
 
 def connect_db():
-    conn = sqlite3.connect('data/arena.db')
+    conn = sqlite3.connect('data/scoreboard.db')
     conn.row_factory = sqlite3.Row
     return conn
 
