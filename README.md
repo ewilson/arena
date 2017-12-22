@@ -5,8 +5,6 @@ A (future) ELO rating system for unscheduled matches. The guiding principles of 
 - Simple technology for easy participation of novices -- such as [my-son](https://github.com/timothy-wilson)
 - Unobtrusive functionality -- descriptive of what has happened, never prescriptive for future actions
 
-Following is out of date in many places.
-
 ## Requirements
 
 - Python 3.6
@@ -35,6 +33,14 @@ To set up the test database, run
 To set up an empty database, without example data, run
 
     $ ./init_db.py new
+
+## Authorization
+
+A password needs to be set as an environment variable:
+
+    export SCOREBOARD_PASSWORD=<password>
+
+All users will share this password. Better than nothing.
 
 ## DB Migrations
 
