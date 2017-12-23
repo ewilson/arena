@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export FLASK_APP=scoreboard/scoreboard.py
+export FLASK_APP=scoreboard/app.py
 if [ $1 = "debug" ]
 then
     export FLASK_DEBUG=1

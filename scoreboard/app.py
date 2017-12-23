@@ -2,8 +2,8 @@ import os
 
 from flask import Flask, redirect, render_template, request, session, url_for
 
-from auth import login_required
 from scoreboard import db_access
+from scoreboard.auth import login_required
 
 app = Flask(__name__)
 
