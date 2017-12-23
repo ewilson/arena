@@ -7,8 +7,8 @@ CREATE TABLE player (
 );
 INSERT INTO "player" VALUES(1,'Eli');
 INSERT INTO "player" VALUES(2,'Tim');
-INSERT INTO "player" VALUES(3,'Simon');
 INSERT INTO "player" VALUES(4,'Nathan');
+INSERT INTO "player" VALUES(5,'Cameron');
 CREATE TABLE migration (
     script TEXT PRIMARY KEY
 );
