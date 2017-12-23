@@ -3,8 +3,7 @@ import sqlite3
 
 import pytest
 
-import db_access
-
+from scoreboard import db_access
 
 TEST_DB_NAME = 'data/test_scoreboard.db'
 SCHEMA_FILE = 'data/test_scoreboard.sql'
