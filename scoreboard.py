@@ -55,7 +55,3 @@ def login():
 def logout():
     session.pop('authorized', None)
     return redirect(url_for('index'))
-
-
-if __name__ == '__main__':
-    app.run(debug=True)

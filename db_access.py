@@ -2,9 +2,6 @@ import sqlite3
 
 from flask import g
 
-from scoreboard import app
-
-
 def get_players():
     conn = get_db()
     return conn.execute('SELECT id, name FROM player').fetchall()
@@ -33,9 +30,3 @@ def connect_db():
     conn = sqlite3.connect('data/scoreboard.db')
     conn.row_factory = sqlite3.Row
     return conn
-
-
-@app.teardown_appcontext
-def close_db(error):
-    if hasattr(g, 'conn'):
-        g.conn.close()
