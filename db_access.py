@@ -1,5 +1,3 @@
-from collections import namedtuple
-
 import sqlite3
 
 from flask import g
@@ -7,13 +5,9 @@ from flask import g
 from scoreboard import app
 
 
-Player = namedtuple('Player', 'id,name')
-
-
 def get_players():
     conn = get_db()
-    db_players = conn.execute('SELECT id, name FROM player').fetchall()
-    return [Player(*tuple(p)) for p in db_players]
+    return conn.execute('SELECT id, name FROM player').fetchall()
 
 
 def delete_player(player_id):

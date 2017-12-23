@@ -33,7 +33,7 @@ def test_get_players(monkeypatch, test_get_db):
     players = db_access.get_players()
 
     assert len(players) == 4
-    assert players[1].name == 'Tim'
+    assert players[1]['name'] == 'Tim'
 
 
 def test_add_player(monkeypatch, test_get_db):
@@ -46,18 +46,18 @@ def test_add_player(monkeypatch, test_get_db):
     current_players = db_access.get_players()
 
     print(current_players)
-    assert current_players[orig_player_num].name == 'Charles'
+    assert current_players[orig_player_num]['name'] == 'Charles'
 
 
 def test_delete_player(monkeypatch, test_get_db):
     monkeypatch.setattr(db_access, 'get_db', test_get_db)
 
     orig_players = db_access.get_players()
-    tim, = [p for p in orig_players if p.name == 'Tim']
+    tim, = [p for p in orig_players if p['name'] == 'Tim']
 
-    db_access.delete_player(tim.id)
+    db_access.delete_player(tim['id'])
 
     current_players = db_access.get_players()
 
-    assert not [p for p in current_players if p.name == 'Tim']
+    assert not [p for p in current_players if p['name'] == 'Tim']
     assert len(current_players) == len(orig_players) - 1
