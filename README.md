@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ewilson/scoreboard.svg?branch=master)](https://travis-ci.org/ewilson/scoreboard)
+
 # Scoreboard
 
 A (future) ELO rating system for unscheduled matches. The guiding principles of this application are
