@@ -2,6 +2,7 @@
 *~
 
 data/scoreboard.db
+data/test_scoreboard.db
 scoreboard-venv
 
 # Created by .ignore support plugin (hsz.mobi)
