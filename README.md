@@ -22,7 +22,9 @@ Execute the following commands in PowerShell or Bash
 
 ## Running the application
 
-    $ python scoreboard.py
+    $ ./start.sh
+
+To start with debug mode, execute `start.sh debug`
 
 Now navigate to [localhost:5000](http://localhost:5000/) to verify that it is running locally. 
 
