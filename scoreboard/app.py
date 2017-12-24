@@ -7,9 +7,9 @@ from scoreboard.auth import login_required
 
 app = Flask(__name__)
 
-app.secret_key = 'DEV_SECRET_KEY'  # TODO -- use environment varaiable before deploy
+app.secret_key = os.environ.get('SECRET_KEY', 'dev-secret-key')
 
-PASSWORD = os.environ.get('SCOREBOARD_PASSWORD')
+PASSWORD = os.environ.get('SCOREBOARD_PASSWORD', 'password')
 
 
 @app.route('/')

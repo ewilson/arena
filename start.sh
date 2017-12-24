@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
 export FLASK_APP=scoreboard/app.py
-if [ $1 = "debug" ]
-then
-    export FLASK_DEBUG=1
-fi
+export FLASK_DEBUG=1
+
 flask run

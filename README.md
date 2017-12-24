@@ -22,11 +22,23 @@ Execute the following commands in PowerShell or Bash
 
 ## Running the application
 
+### Flask dev server
+
+Run
+
     $ ./start.sh
 
-To start with debug mode, execute `start.sh debug`
-
 Now navigate to [localhost:5000](http://localhost:5000/) to verify that it is running locally. 
+
+### Production with Gunicorn/nginx
+
+Configure nginx to use gunicorn & wsgi.py. The `run_prod.sh` script has an example Gunicorn
+command to start the app.
+
+Make sure to set the following environment variables:
+
+- `SECRET_KEY`: A good password, without which the session will be easily hacked.
+- `SCOREBOARD_PASSWORD`: The password all users will share in the current better-than-nothing security
 
 ## DB setup
 
