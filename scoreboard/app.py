@@ -1,8 +1,9 @@
+from collections import namedtuple
 import os
 
 from flask import Flask, redirect, render_template, request, session, url_for
 
-from scoreboard import db_access
+from scoreboard import db_access, match_service
 from scoreboard.auth import login_required
 
 app = Flask(__name__)
@@ -11,14 +12,30 @@ app.secret_key = os.environ.get('SECRET_KEY', 'dev-secret-key')
 
 PASSWORD = os.environ.get('SCOREBOARD_PASSWORD', 'password')
 
+PlayerInput = namedtuple('Player', 'name')
+
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    players = db_access.get_players()
+    matches = db_access.get_matches()
+    return render_template('index.html', players=players, matches=matches)
+
+
+@app.route('/match/add', methods=['POST'])
+@login_required
+def add_match():
+    match_input = match_service.build_match(
+        request.form.get('player1'),
+        request.form.get('player2'),
+        int(request.form.get('score1')),
+        int(request.form.get('score2'))
+    )
+    db_access.add_match(match_input)
+    return redirect(url_for('index'))
 
 
 @app.route('/player/list')
-@login_required
 def list_players():
     players = db_access.get_players()
     return render_template('player/list.html', players=players)
@@ -35,7 +52,8 @@ def delete_player(player_id):
 @login_required
 def add_player():
     name = request.form.get('name')
-    db_access.add_player(name)
+    player_input = PlayerInput(name)
+    db_access.add_player(player_input)
     return redirect(url_for('list_players'))
 
 

@@ -5,24 +5,31 @@
     <table>
       <thead>
         <tr>
-          <th>Name</th><th>Delete</th>
+            <th>Name</th>
+            {% if 'authorized' in session %}
+                <th>Delete</th>
+            {% endif %}
         </tr>
       </thead>
       <tbody>
       {% for player in players %}
         <tr>
-          <td>{{ player.name }}</td>
-          <td><a href="{{ url_for('delete_player', player_id=player.id) }}">Delete</a></td>
+            <td>{{ player.name }}</td>
+            {% if 'authorized' in session %}
+                <td><a href="{{ url_for('delete_player', player_id=player.id) }}">Delete</a></td>
+            {% endif %}
         </tr>
       {% endfor %}
       </tbody>
     </table>
-  {% else %}
-    <h4>There are no players</h4>
-  {% endif %}
-  <h3>Add new player</h3>
-  <form action="{{ url_for('add_player') }}" method="post">
-    <label>Name: <input type="text" name="name"/></label><br/>
-    <input type="submit" value="Submit"><br/>
-  </form>
+    {% else %}
+        <h4>There are no players</h4>
+    {% endif %}
+    {% if 'authorized' in session %}
+        <h3>Add new player</h3>
+        <form action="{{ url_for('add_player') }}" method="post">
+            <label>Name: <input type="text" name="name"/></label><br/>
+            <input type="submit" value="Submit"><br/>
+        </form>
+    {% endif %}
 {% endblock %}
