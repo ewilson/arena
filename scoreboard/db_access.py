@@ -65,6 +65,10 @@ def get_matches():
     return [util.row_to_namedtuple(MatchOutput, r) for r in results]
 
 
+def delete_match(match_id):
+    print('delete', match_id)
+
+
 def get_players():
     conn = get_db()
     results = conn.execute('SELECT id, name FROM player ORDER BY name').fetchall()

@@ -26,7 +26,18 @@
     </form>
     {% endif %}
     {% for match in matches %}
-        <h4>{{match.winner_name}} defeated {{match.loser_name}},
-            {{match.winner_score}}-{{match.loser_score}}</h4>
+        <table class="match-result">
+            <tr>
+                <td class="match-name">{{match.winner_name}}</td>
+                <td class="match-score">{{match.winner_score}}</td>
+                <td rowspan="2" class="delete">
+                    <a href="{{ url_for('delete_match', match_id=match.id) }}" class="no-underline">X</a>
+                </td>
+            </tr>
+            <tr>
+                <td class="match-name">{{match.loser_name}}</td>
+                <td class="match-score">{{match.loser_score}}</td>
+            </tr>
+        </table>
     {% endfor %}
 {% endblock %}

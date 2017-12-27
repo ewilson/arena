@@ -19,3 +19,28 @@ table {
     list-style: none;
     padding: 5px;
 }
+
+.no-underline {
+    text-decoration: none;
+}
+
+.delete {
+    margin: auto;
+    text-align: center;
+    font-weight: bold;
+}
+
+.match-result {
+    margin: 10px;
+}
+
+.match-name {
+    width: 120px;
+    padding-left: 15px;
+}
+
+.match-score {
+    text-align: right;
+    padding-right: 15px;
+    padding-left: 15px;
+}
