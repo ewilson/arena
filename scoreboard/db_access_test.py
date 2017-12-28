@@ -37,7 +37,7 @@ def test_get_matches(monkeypatch, test_get_db):
     assert matches[0].loser_name == 'Tim'
     assert matches[0].winner_score == 43
     assert matches[0].loser_score == 41
-    assert matches[0].datetime_added.startswith('2017-12-26')
+    assert matches[0].datetime_added.startswith('2017-12-27')
 
 
 def test_add_match(monkeypatch, test_get_db):
