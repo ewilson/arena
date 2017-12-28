@@ -1,26 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Scoreboard</title>
-    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+  <meta charset="UTF-8">
+  <title>Scoreboard</title>
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <ul class="flashes">
+      {% for category, message in messages %}
+        <li class="{{ category }}">{{ message }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
   <h1>Scoreboard</h1>
-    {% block body %}{% endblock %}
+  {% block body %}{% endblock %}
   <ul>
     <li class="footer-item">
-        <a href="{{ url_for('index') }}">Home</a>
+      <a href="{{ url_for('index') }}">Home</a>
     </li>
     <li class="footer-item">
-        <a href="{{ url_for('list_players') }}">Players</a>
+      <a href="{{ url_for('list_players') }}">Players</a>
     </li>
     <li class="footer-item">
-        {% if 'authorized' not in session %}
-            <a href="{{ url_for('login') }}">Login</a>
-        {% else %}
-            <a href="{{ url_for('logout') }}">Logout</a>
-        {% endif %}
+      {% if 'authorized' not in session %}
+        <a href="{{ url_for('login') }}">Login</a>
+      {% else %}
+        <a href="{{ url_for('logout') }}">Logout</a>
+      {% endif %}
     </li>
   </ul>
 </body>

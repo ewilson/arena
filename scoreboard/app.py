@@ -1,7 +1,7 @@
 from collections import namedtuple
 import os
 
-from flask import Flask, redirect, render_template, request, session, url_for
+from flask import flash, Flask, redirect, render_template, request, session, url_for
 
 from scoreboard import db_access, match_service
 from scoreboard.auth import login_required
@@ -72,7 +72,7 @@ def login():
             if request.form['next']:
                 return redirect(request.form['next'])
             return redirect(url_for('index'))
-
+        flash('Login unsucessful', 'error')
     return render_template('login.html')
 
 

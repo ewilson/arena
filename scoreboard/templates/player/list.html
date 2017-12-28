@@ -1,35 +1,35 @@
 {% extends "base.html" %}
 {% block body %}
   <h2>Players</h2>
-    {% if players %}
+  {% if players %}
     <table>
       <thead>
         <tr>
-            <th>Name</th>
-            {% if 'authorized' in session %}
-                <th>Delete</th>
-            {% endif %}
+          <th>Name</th>
+          {% if 'authorized' in session %}
+            <th>Delete</th>
+          {% endif %}
         </tr>
       </thead>
       <tbody>
       {% for player in players %}
         <tr>
-            <td>{{ player.name }}</td>
-            {% if 'authorized' in session %}
-                <td class="delete"><a href="{{ url_for('delete_player', player_id=player.id) }}" class="no-underline"><span>X</span></a></td>
-            {% endif %}
+          <td>{{ player.name }}</td>
+          {% if 'authorized' in session %}
+            <td class="delete"><a href="{{ url_for('delete_player', player_id=player.id) }}" class="no-underline"><span>X</span></a></td>
+          {% endif %}
         </tr>
       {% endfor %}
       </tbody>
     </table>
-    {% else %}
-        <h4>There are no players</h4>
-    {% endif %}
-    {% if 'authorized' in session %}
-        <h3>Add new player</h3>
-        <form action="{{ url_for('add_player') }}" method="post">
-            <label>Name: <input type="text" name="name"/></label><br/>
-            <input type="submit" value="Submit"><br/>
-        </form>
-    {% endif %}
+  {% else %}
+    <h4>There are no players</h4>
+  {% endif %}
+  {% if 'authorized' in session %}
+    <h3>Add new player</h3>
+    <form action="{{ url_for('add_player') }}" method="post">
+      <label>Name: <input type="text" name="name"/></label><br/>
+      <input type="submit" value="Submit"><br/>
+    </form>
+  {% endif %}
 {% endblock %}

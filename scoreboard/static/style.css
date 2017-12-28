@@ -44,3 +44,8 @@ table {
     padding-right: 15px;
     padding-left: 15px;
 }
+
+li.error {
+    list-style: none;
+    color: red;
+}
