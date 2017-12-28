@@ -10,6 +10,6 @@ CREATE TABLE match_player (
     opponent_score INTEGER NOT NULL,
     win BOOLEAN NOT NULL,
     PRIMARY KEY (match_id, player_id),
-    FOREIGN KEY (match_id) REFERENCES match(id),
+    FOREIGN KEY (match_id) REFERENCES match(id) ON DELETE CASCADE,
     FOREIGN KEY (player_id) REFERENCES player(id)
 );

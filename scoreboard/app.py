@@ -35,6 +35,13 @@ def add_match():
     return redirect(url_for('index'))
 
 
+@app.route('/match/delete/<match_id>')
+@login_required
+def delete_match(match_id):
+    db_access.delete_match(match_id)
+    return redirect(url_for('index'))
+
+
 @app.route('/player/list')
 def list_players():
     players = db_access.get_players()
