@@ -60,6 +60,30 @@ def test_add_match(monkeypatch, test_get_db):
     assert added_match.datetime_added == '2018-01-01'
 
 
+def test_add_delete_match(monkeypatch, test_get_db):
+
+    monkeypatch.setattr(db_access, 'get_db', test_get_db)
+    matches = db_access.get_matches()
+    orig_match_num = len(matches)
+
+    match_input = mock.Mock(
+        winner_id=1, winner_score=21,
+        loser_id=2, loser_score=16,
+        datetime_added='2018-01-01'
+    )
+
+    match_id = db_access.add_match(match_input)
+
+    matches_2 = db_access.get_matches()
+    added_match_num = len(matches_2)
+    assert added_match_num == orig_match_num + 1
+
+    db_access.delete_match(match_id)
+
+    matches_3 = db_access.get_matches()
+    assert len(matches_3) == orig_match_num
+
+
 def test_get_players(monkeypatch, test_get_db):
     monkeypatch.setattr(db_access, 'get_db', test_get_db)
 

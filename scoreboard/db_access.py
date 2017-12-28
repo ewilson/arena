@@ -66,7 +66,9 @@ def get_matches():
 
 
 def delete_match(match_id):
-    print('delete', match_id)
+    conn = get_db()
+    conn.execute('DELETE FROM match WHERE id = :id', {'id': match_id})
+    conn.commit()
 
 
 def get_players():
