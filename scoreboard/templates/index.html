@@ -1,43 +1,43 @@
 {% extends "base.html" %}
 {% block body %}
-    {% if 'authorized' in session %}
+  {% if 'authorized' in session %}
 
-    <h3>Add new match</h3>
-    <form action="{{ url_for('add_match') }}" method="post">
-        <label for="player1">Player: </label>
-        <select name="player1" id="player1">
-            <option value=""></option>
-            {% for player in players %}
-                <option value="{{ player.id }}">{{player.name}}</option>
-            {% endfor %}
-        </select>
-        <label for="score1">Score:</label>
-        <input type="number" name="score1" id="score1" value="21"/><br/>
-        <label for="player1">Player: </label>
-        <select name="player2" id="player2">
-            <option value=""></option>
-            {% for player in players %}
-                <option value="{{ player.id }}">{{player.name}}</option>
-            {% endfor %}
-        </select>
-        <label for="score1">Score:</label>
-        <input type="number" name="score2" id="score2" value="15"/><br/>
-        <input type="submit" value="Submit"><br/>
-    </form>
-    {% endif %}
-    {% for match in matches %}
-        <table class="match-result">
-            <tr>
-                <td class="match-name">{{match.winner_name}}</td>
-                <td class="match-score">{{match.winner_score}}</td>
-                <td rowspan="2" class="delete">
-                    <a href="{{ url_for('delete_match', match_id=match.id) }}" class="no-underline">X</a>
-                </td>
-            </tr>
-            <tr>
-                <td class="match-name">{{match.loser_name}}</td>
-                <td class="match-score">{{match.loser_score}}</td>
-            </tr>
-        </table>
-    {% endfor %}
+  <h3>Add new match</h3>
+  <form action="{{ url_for('add_match') }}" method="post">
+    <label for="player1">Player: </label>
+    <select name="player1" id="player1">
+      <option value=""></option>
+      {% for player in players %}
+        <option value="{{ player.id }}">{{player.name}}</option>
+      {% endfor %}
+    </select>
+    <label for="score1">Score:</label>
+    <input type="number" name="score1" id="score1" min="0" max="99" required /><br/>
+    <label for="player1">Player: </label>
+    <select name="player2" id="player2">
+      <option value=""></option>
+      {% for player in players %}
+        <option value="{{ player.id }}">{{player.name}}</option>
+      {% endfor %}
+    </select>
+    <label for="score1">Score:</label>
+    <input type="number" name="score2" id="score2" min="0" max="99"  required /><br/>
+    <input type="submit" value="Submit"><br/>
+  </form>
+  {% endif %}
+  {% for match in matches %}
+    <table class="match-result">
+      <tr>
+        <td class="match-name">{{match.winner_name}}</td>
+        <td class="match-score">{{match.winner_score}}</td>
+        <td rowspan="2" class="delete">
+          <a href="{{ url_for('delete_match', match_id=match.id) }}" class="no-underline">X</a>
+        </td>
+      </tr>
+      <tr>
+        <td class="match-name">{{match.loser_name}}</td>
+        <td class="match-score">{{match.loser_score}}</td>
+      </tr>
+    </table>
+  {% endfor %}
 {% endblock %}
