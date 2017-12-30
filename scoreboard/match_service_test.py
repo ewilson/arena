@@ -8,7 +8,12 @@ def test_build_match(monkeypatch):
     player1_id, player2_id = mock.Mock(), mock.Mock()
     score1, score2 = 5, 11
 
-    result = match_service.build_match(player1_id, player2_id, score1, score2)
+    result = match_service.build_match({
+        'player1': player1_id,
+        'player2': player2_id,
+        'score1': score1,
+        'score2': score2
+    })
 
     assert result.winner_id == player2_id
     assert result.winner_score == 11
